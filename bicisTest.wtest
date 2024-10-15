@@ -1,0 +1,50 @@
+import bicicletas.*
+
+describe "Test de Bicis" {
+  const biciOlmo28 = new Bicicleta(
+    rodado = 28,
+    largo = 150,
+    marca = "Olmo",
+    accesorios = [new Farolito()]
+  )
+  const biciLegnano26 = new Bicicleta(
+    rodado = 26,
+    largo = 110,
+    marca = "Legnano",
+    accesorios = [
+      new Farolito(),
+      new Canasto(volumen = 8),
+      new Morral(largo = 21, tieneOjoDeGato = true)
+    ]
+  )
+  const biciLegnano20 = new Bicicleta(
+    rodado = 20,
+    largo = 90,
+    marca = "Legnano",
+    accesorios = new Morral(largo = 6)
+  )
+  
+  test "La Bici Olmo tiene altura 85" {
+    assert.equals(85, biciOlmo28.altura())
+  }
+  
+  test "La Bici Olmo tiene velocidad 34" {
+    assert.equals(34, biciOlmo28.velocidadDeCrucero())
+  }
+  
+  test "La Bici Olmo tiene carga 0" {
+    assert.equals(0, biciOlmo28.carga())
+  }
+  
+  test "La Bici Olmo tiene peso 14.5" {
+    assert.equals(14.5, biciOlmo28.peso())
+  }
+  
+  test "La Bici Olmo tiene luz" {
+    assert.that(biciOlmo28.tieneLuz())
+  }
+  
+  test "La Bici Olmo tiene un accesorio liviano" {
+    assert.that(biciOlmo28.cantAccesoriosLivianos() == 1)
+  }
+}
